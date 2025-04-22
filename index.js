@@ -1,6 +1,35 @@
+const express = require('express');
+const mysql = require('mysql2/promise');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Read from Railway-provided environment variables
+const dbConfig = {
+  host: process.env.MYSQLHOST || 'mysql.railway.internal',
+  user: process.env.MYSQLUSER || 'root',
+  password: process.env.MYSQL_ROOT_PASSWORD || 'UALpbLSdCokkIklReNCQluMptbwrxdZl',
+  database: process.env.MYSQLDATABASE || 'railway',
+  port: process.env.MYSQLPORT || 3306,
+};
+
+// MySQL pool
+let db;
+mysql.createPool(dbConfig)
+  .then(pool => {
+    db = pool;
+    console.log('✅ Connected to Railway MySQL');
+  })
+  .catch(err => {
+    console.error('❌ MySQL connection error:', err);
+  });
+
+// Route to create table and insert dummy school
 app.get('/add-dummy-school', async (req, res) => {
   try {
-    const [result] = await db.execute(`
+    await db.execute(`
       CREATE TABLE IF NOT EXISTS schools (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(100),
@@ -15,10 +44,14 @@ app.get('/add-dummy-school', async (req, res) => {
       VALUES (?, ?, ?, ?)
     `, ['Test School', 'Sample Address', 12.9716, 77.5946]);
 
-    res.send('Dummy school inserted & table created!');
+    res.send('✅ Dummy school inserted & table created!');
   } catch (err) {
     console.error(err);
-    res.status(500).send('Error inserting dummy data');
+    res.status(500).send('❌ Error inserting dummy data');
   }
 });
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
