@@ -150,7 +150,7 @@ Use [Postman](https://www.postman.com/) or any API client to test the endpoints:
 
 A ready-to-use Postman collection is available:
 
-🔗 [Postman Collection Link](#)
+🔗 [Postman Collection Link](https://web.postman.co/workspace/526432ca-63be-40a3-896a-4adf883dc2d8/request/create?requestId=9c27bb1d-6bfe-427c-b385-2f1e77e40781)
 
 > Replace the link above with your actual shared Postman collection URL.
 
