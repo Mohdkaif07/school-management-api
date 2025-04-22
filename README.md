@@ -30,3 +30,23 @@ CREATE TABLE IF NOT EXISTS schools (
   latitude FLOAT,
   longitude FLOAT
 );
+
+---
+
+## 📌 API Endpoints
+
+### ➕ Add School
+
+- **URL:** `/addSchool`
+- **Method:** `POST`
+- **Headers:** `Content-Type: application/json`
+- **Request Body:**
+
+```json
+{
+  "name": "Greenwood High",
+  "address": "123 School Lane, Bengaluru",
+  "latitude": 12.9716,
+  "longitude": 77.5946
+}
+
