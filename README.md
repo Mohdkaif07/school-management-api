@@ -134,6 +134,35 @@ MYSQLDATABASE=school_db
 MYSQLPORT=3306
 PORT=3000
 ```
+---
+
+## 🧪 Testing the APIs
+
+Use [Postman](https://www.postman.com/) or any API client to test the endpoints:
+
+- `POST /addSchool` — Add a new school
+- `GET /listSchools?latitude=12.97&longitude=77.59` — List schools by proximity
+- `GET /add-dummy-school` — Create table and insert sample school
+
+---
+
+## 📬 Postman Collection
+
+A ready-to-use Postman collection is available:
+
+🔗 [Postman Collection Link](#)
+
+> Replace the link above with your actual shared Postman collection URL.
+
+---
+
+## 👨‍💻 Author
+
+Made with ❤️ by **MD KAIF**  
+📧 Email: gamingstunt32@gmail.com  
+🐙 GitHub: [MohdKAif07](https://github.com/MOhdkaif07)
+
+---
 
 
 
