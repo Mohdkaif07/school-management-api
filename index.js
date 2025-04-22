@@ -1,15 +1,24 @@
-const express = require('express');
-const app = express();
-const schoolRoutes = require('./routes/schoolRoutes');
+app.get('/add-dummy-school', async (req, res) => {
+  try {
+    const [result] = await db.execute(`
+      CREATE TABLE IF NOT EXISTS schools (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100),
+        address VARCHAR(255),
+        latitude DECIMAL(9,6),
+        longitude DECIMAL(9,6)
+      )
+    `);
 
-// Middleware to parse JSON
-app.use(express.json());
+    await db.execute(`
+      INSERT INTO schools (name, address, latitude, longitude)
+      VALUES (?, ?, ?, ?)
+    `, ['Test School', 'Sample Address', 12.9716, 77.5946]);
 
-// Use your school routes
-app.use('/', schoolRoutes);
-
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+    res.send('Dummy school inserted & table created!');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error inserting dummy data');
+  }
 });
+
