@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS schools (
   longitude FLOAT
 );
 
----
+```
 
 ## 📌 API Endpoints
 
@@ -49,4 +49,6 @@ CREATE TABLE IF NOT EXISTS schools (
   "latitude": 12.9716,
   "longitude": 77.5946
 }
+```
+
 
