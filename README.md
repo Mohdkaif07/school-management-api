@@ -93,6 +93,48 @@ CREATE TABLE IF NOT EXISTS schools (
 ]
 ```
 
+- **Error Response:**
+  - `400 Bad Request`
+  - `❌ Latitude and longitude are required!`
+
+---
+
+### 🧪 Dummy School Seeder
+
+- **URL:** `/add-dummy-school`
+- **Method:** `GET`
+- **Purpose:** Creates the `schools` table and inserts a test entry for validation/demo
+
+---
+
+## 🧑‍💻 How to Run Locally
+
+### 📦 Prerequisites
+
+- Node.js (v18+)
+- MySQL Server
+
+### ⚙️ Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/school-management-api.git
+cd school-management-api
+
+# Install dependencies
+npm install
+```
+# Create a .env file with the following contents
+
+```env
+MYSQLHOST=localhost
+MYSQLUSER=root
+MYSQLPASSWORD=yourpassword
+MYSQLDATABASE=school_db
+MYSQLPORT=3306
+PORT=3000
+```
+
 
 
 
