@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // const express = require('express');
 // const app = express();
 // const schoolRoutes = require('./routes/schoolRoutes');
@@ -24,7 +24,6 @@ const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
 
->>>>>>> f69c7dcc09001eb9d70f30049eb1708ee6befbe0
 const app = express();
 app.use(cors());
 app.use(express.json());
