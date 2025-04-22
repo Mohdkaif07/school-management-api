@@ -50,5 +50,49 @@ CREATE TABLE IF NOT EXISTS schools (
   "longitude": 77.5946
 }
 ```
+- **Success Response:**
+  - `201 Created`
+  - `✅ School added successfully!`
+
+- **Error Response:**
+  - `400 Bad Request`
+  - `❌ All fields (name, address, latitude, longitude) are required!`
+
+---
+
+### 📍 List Schools by Proximity
+
+- **URL:** `/listSchools`
+- **Method:** `GET`
+- **Query Parameters:**
+  - `latitude`: User’s current latitude
+  - `longitude`: User’s current longitude
+
+- **Example Request:**
+```
+
+- **Success Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Greenwood High",
+    "address": "123 School Lane, Bengaluru",
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "distance": 0
+  },
+  {
+    "id": 2,
+    "name": "St. Joseph's School",
+    "address": "MG Road, Bengaluru",
+    "latitude": 12.9755,
+    "longitude": 77.6035,
+    "distance": 1.1
+  }
+]
+```
+
+
 
 
