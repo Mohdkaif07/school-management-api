@@ -15,9 +15,8 @@
 //   console.log(`Server running on http://localhost:${PORT}`);
 // });
 
-
 const express = require('express');
-const mysql = require('mysql2/promise');
+const mysql = require('mysql2/promise'); // Use promise-based API
 const cors = require('cors');
 
 const app = express();
@@ -35,18 +34,20 @@ const dbConfig = {
 
 // MySQL pool
 let db;
-mysql.createPool(dbConfig)
-  .then(pool => {
-    db = pool;
+
+(async function() {
+  try {
+    db = await mysql.createPool(dbConfig); // Use await for creating pool
     console.log('✅ Connected to Railway MySQL');
-  })
-  .catch(err => {
+  } catch (err) {
     console.error('❌ MySQL connection error:', err);
-  });
+  }
+})();
 
 // Route to create table and insert dummy school
 app.get('/add-dummy-school', async (req, res) => {
   try {
+    // Create the table if it doesn't exist
     await db.execute(`
       CREATE TABLE IF NOT EXISTS schools (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -57,6 +58,7 @@ app.get('/add-dummy-school', async (req, res) => {
       )
     `);
 
+    // Insert a dummy school
     await db.execute(`
       INSERT INTO schools (name, address, latitude, longitude)
       VALUES (?, ?, ?, ?)
@@ -73,3 +75,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
+
+
